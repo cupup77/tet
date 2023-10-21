@@ -46,14 +46,15 @@ public class learnbox extends ApplicationAdapter {
         var tileWidth = map.getProperties().get("tilewidth", Integer.class);
 
         System.out.println(tileWidth);
-        System.out.println(cameraWidth);
         var builder = new TiledObjectLayerToBox2d(TiledObjectLayerToBox2dOptions.builder()
                 .scale(1f / cameraWidth)
                 .throwOnInvalidObject(false)
                 .build());
         builder.parseAllLayers(map, world);
-    
+        camera.setToOrtho(false,cameraWidth/ppm,cameraHeight/ppm);
+
         body = createobject(world,80,500, BodyDef.BodyType.DynamicBody,true,0,0);
+
 
 
     }
